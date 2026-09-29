@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>OLIIE 117 | Pinheiros, São Paulo — Rua Fernandes Coelho, 117</title>
+<meta name="description" content="OLIIE 117 — lançamento exclusivo em Pinheiros. 2 unidades disponíveis de 84,42 m² · 2 Suítes Premium. Arquitetura Triptyque. SKR Incorporadora. Rua Fernandes Coelho, 117.">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','983999465438126');
+fbq('track','PageView');
+
+// ── LIGHTBOX ────────────────────────────────────────────────────────────────
+const lbImages=[
+  {src:'assets/oliie-renders/fachada-noite.jpg',cap:'Fachada · Vista Noturna'},
+  {src:'assets/oliie-renders/fachada-close.jpg',cap:'Fachada · Detalhe Arquitetônico'},
+  {src:'assets/oliie-renders/praca.jpg',cap:'Praça · Paisagismo Raul Pereira'},
+  {src:'assets/oliie-renders/piscina.jpg',cap:'Piscina Elevada · 10º Pavimento'},
+  {src:'assets/oliie-renders/lobby.jpg',cap:'Lobby · Térreo'},
+  {src:'assets/oliie-renders/coworking.jpg',cap:'Coworking · 1º Pavimento'},
+  {src:'assets/oliie-renders/lounge-piscina.jpg',cap:'Lounge Piscina · 10º Pavimento'},
+  {src:'assets/oliie-renders/fitness.jpg',cap:'Espaço Fitness · 10º Pavimento'},
+  {src:'assets/oliie-renders/lounge-festas.jpg',cap:'Lounge Festas · 26º Pavimento'},
+  {src:'assets/oliie-renders/fire-pit.jpg',cap:'Fire Pit · Rooftop'},
+  {src:'assets/oliie-renders/sauna.jpg',cap:'Sauna · 10º Pavimento'},
+  {src:'assets/oliie-renders/jogos.jpg',cap:'Sala de Jogos · 10º Pavimento'},
+  {src:'assets/oliie-renders/terraco-festas.jpg',cap:'Terraço Festas · Rooftop'},
+  {src:'assets/oliie-book/page_07.jpg',cap:'Lobby · Térreo'},
+  {src:'assets/oliie-book/page_08.jpg',cap:'Praça · Paisagismo'},
+  {src:'assets/oliie-book/page_09.jpg',cap:'Coworking · 1º Pavimento'},
+  {src:'assets/oliie-book/page_10.jpg',cap:'Lavanderia · 1º Pavimento'},
+  {src:'assets/oliie-book/page_11.jpg',cap:'Piscina · 10º Pavimento'},
+  {src:'assets/oliie-book/page_12.jpg',cap:'Lounge Piscina · 10º Pavimento'},
+  {src:'assets/oliie-book/page_13.jpg',cap:'Sauna · 10º Pavimento'},
+  {src:'assets/oliie-book/page_14.jpg',cap:'Fitness · 10º Pavimento'},
+  {src:'assets/oliie-book/page_15.jpg',cap:'Sala de Jogos · 10º Pavimento'},
+  {src:'assets/oliie-book/page_16.jpg',cap:'Lounge Festas · 26º Pavimento'},
+  {src:'assets/oliie-book/page_17.jpg',cap:'Terraço Festas · Rooftop'},
+  {src:'assets/oliie-book/page_18.jpg',cap:'Terraço ao Ar Livre · Rooftop'},
+  {src:'assets/oliie-book/page_19.jpg',cap:'Plantas das Unidades'},
+  {src:'assets/oliie-book/page_20.jpg',cap:'Plantas das Unidades'},
+  {src:'assets/oliie-book/page_21.jpg',cap:'Planta 46 m² · 1 Suíte'},
+];
+let lbCurrent=0;
+
+function openLB(i){
+  lbCurrent=i;
+  buildThumbs();
+  updateLB();
+  document.getElementById('lb-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  document.getElementById('lb-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('lb-overlay').addEventListener('click',function(e){
+  if(e.target===this)closeLB();
+});
+function lbNav(d){
+  lbCurrent=(lbCurrent+d+lbImages.length)%lbImages.length;
+  updateLB();
+}
+function updateLB(){
+  const item=lbImages[lbCurrent];
+  const img=document.getElementById('lb-img');
+  img.style.opacity='0';
+  setTimeout(()=>{img.src=item.src;img.alt=item.cap;img.style.opacity='1';},120);
+  document.getElementById('lb-caption').textContent=item.cap;
+  document.getElementById('lb-counter').textContent=(lbCurrent+1)+' / '+lbImages.length;
+  document.querySelectorAll('.lb-thumb').forEach((t,i)=>{
+    t.classList.toggle('active',i===lbCurrent);
+  });
+  const thumbs=document.getElementById('lb-thumbs');
+  const active=thumbs.querySelectorAll('.lb-thumb')[lbCurrent];
+  if(active)active.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+}
+function buildThumbs(){
+  const c=document.getElementById('lb-thumbs');
+  if(c.children.length)return;
+  lbImages.forEach((item,i)=>{
+    const img=document.createElement('img');
+    img.src=item.src;img.alt=item.cap;img.className='lb-thumb';
+    img.onclick=()=>{lbCurrent=i;updateLB();};
+    c.appendChild(img);
+  });
+}
+document.getElementById('lb-img').style.transition='opacity .12s ease';
+document.addEventListener('keydown',e=>{
+  const o=document.getElementById('lb-overlay');
+  if(!o.classList.contains('open'))return;
+  if(e.key==='ArrowRight'||e.key==='ArrowDown')lbNav(1);
+  else if(e.key==='ArrowLeft'||e.key==='ArrowUp')lbNav(-1);
+  else if(e.key==='Escape')closeLB();
+});
+// Touch swipe on lightbox
+(()=>{
+  let sx=0;
+  const el=document.getElementById('lb-overlay');
+  el.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
+  el.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>40){dx<0?lbNav(1):lbNav(-1);}
+  },{passive:true});
+})();
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────────────────────
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=983999465438126&ev=PageView&noscript=1"/></noscript>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --orange:#D76B28;
+  --orange-light:#E88040;
+  --orange-dim:rgba(215,107,40,.12);
+  --brown:#5A3E2B;
+  --bege:#F5E9DA;
+  --white:#FFFFFF;
+  --text:#5A3E2B;
+  --muted:rgba(90,62,43,.55);
+  --border:rgba(90,62,43,.12);
+  --radius:14px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+
+/* FLOATING WPP */
+.wpp{position:fixed;bottom:22px;right:18px;z-index:999;
+  background:#25D366;color:#fff;border-radius:50px;
+  padding:13px 20px;font-size:14px;font-weight:700;
+  display:flex;align-items:center;gap:9px;
+  box-shadow:0 4px 24px rgba(37,211,102,.45);
+  text-decoration:none;animation:wpp-pulse 3s infinite;}
+.wpp svg{width:20px;height:20px;fill:#fff;flex-shrink:0;}
+@keyframes wpp-pulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,.45);}50%{box-shadow:0 4px 40px rgba(37,211,102,.7);}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 28px;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);transition:box-shadow .2s;}
+nav.scrolled{box-shadow:0 2px 16px rgba(90,62,43,.1);}
+.nav-logo{height:36px;display:block;}
+.nav-logo img{height:100%;width:auto;display:block;}
+.nav-btn{background:var(--orange);color:#fff;padding:10px 20px;border-radius:50px;
+  font-size:13px;font-weight:700;letter-spacing:.3px;text-decoration:none;
+  transition:background .2s;white-space:nowrap;}
+.nav-btn:hover{background:var(--orange-light);}
+
+/* URGENCY */
+.urgency{margin-top:64px;background:var(--orange);color:#fff;
+  text-align:center;padding:9px 20px;font-size:12px;font-weight:700;letter-spacing:.8px;}
+
+/* HERO */
+.hero{position:relative;min-height:calc(100svh - 104px);overflow:hidden;
+  display:flex;align-items:flex-end;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.hero-bg::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(20,10,5,.88) 0%, rgba(20,10,5,.45) 50%, rgba(20,10,5,.15) 100%);}
+.hero-content{position:relative;z-index:2;padding:60px 32px 64px;max-width:700px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;
+  background:rgba(215,107,40,.2);border:1px solid rgba(215,107,40,.4);
+  color:var(--orange);padding:6px 16px;border-radius:50px;
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
+.hero-eyebrow i{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:dot-blink 1.8s infinite;}
+@keyframes dot-blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.hero h1{font-size:clamp(52px,10vw,100px);font-weight:900;line-height:.9;
+  letter-spacing:-4px;margin-bottom:16px;color:#fff;}
+.hero h1 .accent{color:var(--orange);}
+.hero-address{font-size:13px;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+.hero p{font-size:clamp(15px,2vw,17px);color:rgba(255,255,255,.75);max-width:480px;margin-bottom:32px;line-height:1.6;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-orange{background:var(--orange);color:#fff;padding:16px 28px;border-radius:50px;
+  font-size:14px;font-weight:700;text-decoration:none;
+  transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:8px;}
+.btn-orange:hover{background:var(--orange-light);transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:#fff;padding:16px 28px;border-radius:50px;
+  font-size:14px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,.3);
+  transition:border-color .2s,transform .15s;display:inline-flex;align-items:center;gap:8px;}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px);}
+.hero-kpis{display:flex;gap:32px;flex-wrap:wrap;margin-top:40px;
+  padding-top:28px;border-top:1px solid rgba(215,107,40,.25);}
+.kpi-num{font-size:24px;font-weight:900;color:var(--orange);}
+.kpi-label{font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.5px;margin-top:2px;}
+
+/* SECTIONS */
+section{padding:72px 24px;}
+.container{max-width:1040px;margin:0 auto;}
+.label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:14px;font-weight:700;}
+.title{font-size:clamp(26px,4.5vw,44px);font-weight:900;line-height:1.1;letter-spacing:-1px;margin-bottom:18px;color:var(--brown);}
+.subtitle{font-size:16px;color:var(--muted);line-height:1.65;max-width:500px;}
+
+/* SPLIT SECTION (text + image) */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;}
+@media(max-width:800px){.split{grid-template-columns:1fr;}}
+.split-text{padding:72px 48px 72px 24px;display:flex;flex-direction:column;justify-content:center;}
+@media(max-width:800px){.split-text{padding:48px 24px;}}
+.split-img{overflow:hidden;min-height:440px;}
+.split-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+.split-img:hover img{transform:scale(1.04);}
+.split.reverse .split-text{order:2;padding:72px 24px 72px 48px;}
+.split.reverse .split-img{order:1;}
+@media(max-width:800px){.split.reverse .split-text,.split.reverse .split-img{order:unset;}}
+
+/* ARQUITETOS */
+.arqs{background:var(--bege);}
+.arqs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+@media(max-width:720px){.arqs-grid{grid-template-columns:1fr;}}
+.arq-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;
+  transition:border-color .2s,box-shadow .2s;}
+.arq-card:hover{border-color:var(--orange);box-shadow:0 4px 20px rgba(215,107,40,.08);}
+.arq-role{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:8px;font-weight:700;}
+.arq-name{font-size:18px;font-weight:800;margin-bottom:10px;color:var(--brown);}
+.arq-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+
+/* TIPOLOGIAS */
+.tipos{background:var(--white);}
+.tipos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px;}
+@media(max-width:640px){.tipos-grid{grid-template-columns:1fr;}}
+.tipo-card{background:var(--bege);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  transition:border-color .2s,transform .2s;}
+.tipo-card:hover{border-color:var(--orange);transform:translateX(4px);}
+.tipo-name{font-size:15px;font-weight:800;margin-bottom:4px;color:var(--brown);}
+.tipo-metros{font-size:13px;color:var(--muted);}
+.tipo-right{text-align:right;flex-shrink:0;}
+.tipo-from{font-size:10px;color:var(--muted);letter-spacing:.5px;margin-bottom:2px;}
+.tipo-price{font-size:16px;font-weight:900;color:var(--orange);}
+.tipo-units{font-size:11px;color:var(--muted);margin-top:2px;}
+
+/* PAGAMENTO */
+.pgto{background:var(--bege);}
+.pgto-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+@media(max-width:800px){.pgto-wrap{grid-template-columns:1fr;}}
+.pgto-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:32px;}
+.pgto-title{font-size:13px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pgto-name{font-size:22px;font-weight:900;margin-bottom:4px;color:var(--brown);}
+.pgto-addr{font-size:13px;color:var(--muted);margin-bottom:24px;}
+.pgto-row{display:flex;justify-content:space-between;align-items:center;
+  padding:12px 0;border-bottom:1px solid var(--border);}
+.pgto-row:last-of-type{border-bottom:none;}
+.pgto-row-label{font-size:14px;color:var(--muted);}
+.pgto-row-val{font-size:14px;font-weight:700;color:var(--brown);}
+.pgto-row-val.highlight{color:var(--orange);font-size:16px;}
+.pgto-total{display:flex;justify-content:space-between;align-items:center;
+  margin-top:16px;padding-top:16px;border-top:2px solid var(--orange-dim);}
+.pgto-total-label{font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--brown);}
+.pgto-total-val{font-size:20px;font-weight:900;color:var(--orange);}
+.pgto-note{font-size:11px;color:var(--muted);margin-top:12px;line-height:1.5;}
+.pgto-img-wrap img{width:100%;height:auto;display:block;border-radius:var(--radius);margin-bottom:12px;}
+
+/* AMENITIES GALLERY */
+.amenities{background:var(--white);}
+.amenities-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:52px;}
+@media(max-width:800px){.amenities-intro{grid-template-columns:1fr;}}
+.floors-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-radius:16px;overflow:hidden;}
+@media(max-width:720px){.floors-gallery{grid-template-columns:1fr;}}
+.floor-item{position:relative;overflow:hidden;aspect-ratio:4/3;}
+.floor-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.floor-item:hover img{transform:scale(1.06);}
+.floor-overlay{position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(20,10,5,.85) 0%,transparent 100%);
+  padding:16px;}
+.floor-tag{display:inline-block;background:var(--orange);color:#fff;
+  font-size:10px;font-weight:800;padding:3px 10px;border-radius:50px;
+  letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.floor-name{font-size:14px;font-weight:700;color:#fff;}
+
+/* PISCINA HERO */
+.piscina-hero{position:relative;height:480px;overflow:hidden;}
+.piscina-hero img{width:100%;height:100%;object-fit:cover;object-position:center 40%;}
+.piscina-hero::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(90,62,43,.7) 0%,transparent 60%);}
+.piscina-text{position:absolute;left:5%;top:50%;transform:translateY(-50%);z-index:2;max-width:420px;}
+.piscina-text .label{color:rgba(255,255,255,.7);}
+.piscina-text .title{color:#fff;}
+.piscina-text .subtitle{color:rgba(255,255,255,.7);}
+
+/* LOCALIZAÇÃO */
+.local{background:var(--bege);}
+.local-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+@media(max-width:800px){.local-grid{grid-template-columns:1fr;gap:32px;}}
+.dist-list{display:flex;flex-direction:column;gap:0;margin-top:28px;}
+.dist-row{display:flex;align-items:center;gap:14px;
+  padding:13px 0;border-bottom:1px solid var(--border);}
+.dist-row:last-child{border-bottom:none;}
+.dist-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0;}
+.dist-name{font-size:14px;font-weight:600;flex:1;color:var(--brown);}
+.dist-time{font-size:12px;color:var(--muted);text-align:right;}
+.map-placeholder{background:var(--white);border-radius:16px;padding:32px;
+  border:1px solid var(--border);text-align:center;}
+
+/* DEVELOPER */
+.skr{background:var(--white);}
+.skr-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+@media(max-width:800px){.skr-inner{grid-template-columns:1fr;}}
+.skr-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+.skr-stat{background:var(--bege);border:1px solid var(--border);border-radius:var(--radius);padding:20px;}
+.skr-stat-num{font-size:26px;font-weight:900;color:var(--orange);}
+.skr-stat-label{font-size:12px;color:var(--muted);margin-top:4px;}
+
+/* FORM */
+.form-section{background:var(--bege);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.form-wrap{max-width:500px;margin:0 auto;
+  background:var(--white);border-radius:20px;padding:36px 32px;
+  border:1px solid var(--border);box-shadow:0 8px 40px rgba(90,62,43,.08);}
+.form-title{font-size:26px;font-weight:900;letter-spacing:-.5px;margin-bottom:8px;color:var(--brown);}
+.form-sub{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:28px;}
+.fg{margin-bottom:14px;}
+.fg label{display:block;font-size:11px;font-weight:700;letter-spacing:.8px;
+  text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+.fg input,.fg select{
+  width:100%;background:var(--bege);border:1px solid var(--border);
+  border-radius:10px;padding:13px 15px;font-size:14px;color:var(--brown);
+  font-family:'Jost',sans-serif;
+  outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.fg input::placeholder{color:var(--muted);}
+.fg input:focus,.fg select:focus{border-color:var(--orange);}
+.fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%235A3E2B' stroke-opacity='.4' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.fg select option{background:#fff;}
+.btn-submit{width:100%;background:var(--orange);color:#fff;
+  padding:16px;border-radius:50px;font-size:15px;font-weight:800;
+  font-family:'Jost',sans-serif;border:none;cursor:pointer;letter-spacing:.3px;
+  transition:background .2s,transform .15s;margin-top:6px;}
+.btn-submit:hover{background:var(--orange-light);transform:translateY(-2px);}
+.form-divider{text-align:center;color:var(--muted);font-size:12px;margin:18px 0;position:relative;}
+.form-divider::before,.form-divider::after{content:'';position:absolute;top:50%;
+  width:38%;height:1px;background:var(--border);}
+.form-divider::before{left:0;}.form-divider::after{right:0;}
+.btn-wpp{width:100%;background:#25D366;color:#fff;
+  padding:15px;border-radius:50px;font-size:14px;font-weight:700;
+  font-family:'Jost',sans-serif;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;
+  text-decoration:none;transition:background .2s;}
+.btn-wpp:hover{background:#1fb85a;}
+.btn-wpp svg{width:18px;height:18px;fill:#fff;}
+.form-legal{font-size:11px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.5;}
+.form-success{display:none;text-align:center;padding:32px 0;}
+.form-success h3{font-size:20px;font-weight:900;color:var(--orange);margin-bottom:8px;}
+.form-success p{font-size:14px;color:var(--muted);line-height:1.6;}
+
+/* FINAL CTA */
+.finalcta{position:relative;text-align:center;padding:96px 24px;overflow:hidden;}
+.finalcta-bg{position:absolute;inset:0;}
+.finalcta-bg img{width:100%;height:100%;object-fit:cover;object-position:center 60%;}
+.finalcta-bg::after{content:'';position:absolute;inset:0;background:rgba(30,15,5,.82);}
+.finalcta-content{position:relative;z-index:2;}
+.finalcta h2{font-size:clamp(28px,6vw,52px);font-weight:900;letter-spacing:-2px;margin-bottom:18px;color:#fff;}
+.finalcta h2 em{font-style:normal;color:var(--orange);}
+.finalcta p{font-size:17px;color:rgba(255,255,255,.65);margin-bottom:36px;line-height:1.6;}
+.final-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+/* FOOTER */
+footer{background:var(--brown);padding:32px 24px;text-align:center;}
+.footer-logo{height:40px;margin:0 auto 14px;display:block;}
+.footer-logo img{height:100%;width:auto;filter:brightness(0) invert(1);opacity:.85;}
+.footer-text{font-size:11px;color:rgba(255,255,255,.45);line-height:1.6;}
+
+@media(max-width:640px){
+  nav{padding:0 16px;}
+  .hero-content{padding:40px 20px 52px;}
+  .hero-kpis{gap:20px;}
+  .form-wrap{padding:24px 18px;}
+  section{padding:56px 20px;}
+  .piscina-hero{height:320px;}
+  .floors-gallery{grid-template-columns:1fr 1fr;}
+}
+
+/* LIGHTBOX */
+.lb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:2000;
+  flex-direction:column;align-items:center;justify-content:center;padding:20px;}
+.lb-overlay.open{display:flex;}
+.lb-inner{position:relative;max-width:min(1000px,90vw);max-height:80vh;
+  display:flex;align-items:center;justify-content:center;}
+.lb-img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:10px;
+  display:block;box-shadow:0 20px 80px rgba(0,0,0,.6);}
+.lb-close{position:fixed;top:16px;right:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:22px;cursor:pointer;padding:6px 12px;border-radius:50px;
+  line-height:1;transition:background .2s;z-index:10;}
+.lb-close:hover{background:rgba(215,107,40,.6);}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:26px;
+  padding:10px 15px;cursor:pointer;border-radius:50%;transition:background .2s;user-select:none;}
+.lb-prev:hover,.lb-next:hover{background:rgba(215,107,40,.55);}
+.lb-prev{left:-56px;}.lb-next{right:-56px;}
+.lb-meta{margin-top:14px;text-align:center;}
+.lb-counter{color:rgba(255,255,255,.45);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;}
+.lb-caption{color:rgba(255,255,255,.75);font-size:13px;font-weight:500;margin-top:4px;}
+.lb-thumbs{display:flex;gap:6px;margin-top:14px;overflow-x:auto;max-width:90vw;padding:4px 0;scrollbar-width:thin;}
+.lb-thumbs::-webkit-scrollbar{height:3px;}
+.lb-thumbs::-webkit-scrollbar-track{background:rgba(255,255,255,.05);}
+.lb-thumbs::-webkit-scrollbar-thumb{background:rgba(215,107,40,.5);border-radius:2px;}
+.lb-thumb{width:48px;height:36px;object-fit:cover;border-radius:4px;cursor:pointer;
+  opacity:.4;border:2px solid transparent;transition:opacity .2s,border-color .2s;flex-shrink:0;}
+.lb-thumb.active,.lb-thumb:hover{opacity:1;border-color:var(--orange);}
+@media(max-width:640px){
+  .lb-prev{left:-40px;font-size:20px;padding:8px 11px;}
+  .lb-next{right:-40px;font-size:20px;padding:8px 11px;}
+  .lb-thumbs{display:none;}
+}
+
+/* GALLERY TRIGGER */
+.gallery-trigger{text-align:center;margin-top:32px;}
+.btn-gallery{background:var(--white);color:var(--brown);padding:14px 28px;border-radius:50px;
+  font-size:13px;font-weight:700;border:2px solid var(--border);cursor:pointer;
+  transition:border-color .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:9px;
+  font-family:'Jost',sans-serif;}
+.btn-gallery:hover{border-color:var(--orange);box-shadow:0 4px 16px rgba(215,107,40,.15);}
+.floor-item.clickable{cursor:zoom-in;}
+.floor-item.clickable:hover img{transform:scale(1.07);}
+
+/* OUTROS EMPREENDIMENTOS */
+.outros{background:var(--bege);}
+.outros-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
+@media(max-width:880px){.outros-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.outros-grid{grid-template-columns:1fr;}}
+.outro-card{background:var(--white);border:1px solid var(--border);border-radius:20px;
+  overflow:hidden;transition:box-shadow .25s,transform .25s;}
+.outro-card:hover{box-shadow:0 10px 36px rgba(90,62,43,.13);transform:translateY(-5px);}
+.outro-thumb{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.outro-badge{position:absolute;top:12px;left:12px;
+  background:var(--orange);color:#fff;font-size:10px;font-weight:800;
+  padding:4px 12px;border-radius:50px;letter-spacing:1.2px;text-transform:uppercase;}
+.outro-body{padding:20px 22px 22px;}
+.outro-name{font-size:17px;font-weight:900;color:var(--brown);margin-bottom:3px;letter-spacing:-.3px;}
+.outro-loc{font-size:12px;color:var(--muted);letter-spacing:.4px;margin-bottom:14px;}
+.outro-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.outro-chip{background:var(--bege);color:var(--muted);font-size:11px;font-weight:600;
+  padding:4px 10px;border-radius:50px;border:1px solid var(--border);}
+.outro-from{font-size:10px;color:var(--muted);letter-spacing:.5px;margin-bottom:2px;}
+.outro-price{font-size:15px;font-weight:900;color:var(--orange);margin-bottom:16px;}
+.outro-cta{width:100%;background:var(--brown);color:#fff;padding:11px;
+  border-radius:50px;font-size:13px;font-weight:700;text-align:center;
+  text-decoration:none;display:block;transition:background .2s;font-family:'Jost',sans-serif;border:none;cursor:pointer;}
+.outro-cta:hover{background:var(--orange);}
+
+/* PLANTAS ARQUITETÔNICAS */
+.plantas{background:var(--bege);}
+.plantas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+@media(max-width:880px){.plantas-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.plantas-grid{grid-template-columns:1fr;gap:12px;}}
+.planta-thumb{position:relative;overflow:hidden;border-radius:10px;
+  border:1px solid var(--border);cursor:zoom-in;background:var(--white);
+  transition:box-shadow .2s,transform .2s;}
+.planta-thumb:hover{box-shadow:0 6px 24px rgba(90,62,43,.15);transform:translateY(-3px);}
+.planta-thumb img{width:100%;height:auto;display:block;
+  transition:transform .4s ease;}
+.planta-thumb:hover img{transform:scale(1.03);}
+.planta-num{position:absolute;bottom:8px;right:8px;
+  background:rgba(90,62,43,.75);color:#fff;
+  font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:.5px;}
+
+/* ÁREAS COMUNS DO BOOK */
+.areas-comuns-sec{background:var(--white);}
+.areas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px;}
+@media(max-width:1000px){.areas-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:700px){.areas-grid{grid-template-columns:repeat(2,1fr);gap:8px;}}
+@media(max-width:420px){.areas-grid{grid-template-columns:1fr;}}
+.area-thumb{position:relative;overflow:hidden;border-radius:10px;cursor:zoom-in;
+  aspect-ratio:16/9;transition:box-shadow .2s,transform .2s;}
+.area-thumb:hover{box-shadow:0 6px 24px rgba(90,62,43,.15);transform:translateY(-3px);}
+.area-thumb img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .4s ease;}
+.area-thumb:hover img{transform:scale(1.05);}
+.area-label{position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(30,15,5,.7));
+  color:#fff;font-size:11px;font-weight:600;padding:18px 10px 8px;
+  letter-spacing:.4px;text-transform:uppercase;}
+
+/* REVEAL ON SCROLL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="#" class="nav-logo">
+    <img src="assets/logo-revenda-horizontal.jpg" alt="Revenda Imóvel — Pensou em imóvel, Revenda Imóvel.">
+  </a>
+  <a href="#form" class="nav-btn">Quero Saber Mais</a>
+</nav>
+
+<div class="urgency">🔑 PRÉ-LANÇAMENTO · Unidades limitadas · Condições exclusivas para os primeiros compradores</div>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-bg">
+    <img src="assets/oliie-renders/fachada-noite.jpg" alt="OLIIE 117 — Fachada, Pinheiros">
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><i></i>Pinheiros · São Paulo</div>
+    <h1><span class="accent">OLIIE</span><br>117</h1>
+    <div class="hero-address">Rua Fernandes Coelho, 117 — Pinheiros, SP</div>
+    <p>Um endereço que se torna uma obra de arte. Arquitetura Triptyque, paisagismo Raul Pereira e o melhor de Pinheiros na sua porta.</p>
+    <div class="hero-actions">
+      <a href="#form" class="btn-orange">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+        Quero as Condições de Pré-Lançamento
+      </a>
+      <a href="https://wa.me/5511967830853?text=Olá!%20Vi%20o%20OLIIE%20117%20em%20Pinheiros%20e%20quero%20mais%20informações" class="btn-ghost" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+    <div class="hero-kpis">
+      <div><div class="kpi-num">26</div><div class="kpi-label">Pavimentos</div></div>
+      <div><div class="kpi-num">84,42 m²</div><div class="kpi-label">2 Suítes Premium</div></div>
+      <div><div class="kpi-num">SKR</div><div class="kpi-label">Incorporadora desde 1985</div></div>
+      <div><div class="kpi-num">Triptyque</div><div class="kpi-label">Arquitetura</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARQUITETOS -->
+<section class="arqs">
+  <div class="container">
+    <div class="label">Time de criação</div>
+    <h2 class="title">Grifes que elevam<br>o padrão de tudo.</h2>
+    <div class="arqs-grid reveal">
+      <div class="arq-card">
+        <div class="arq-role">Arquitetura</div>
+        <div class="arq-name">Triptyque Architecture</div>
+        <div class="arq-desc">Escritório franco-brasileiro com pesquisa de 15 anos em topologia urbana. Uma fachada que abraça o terreno criando verticalidade e elegância — um novo ponto de referência no skyline de Pinheiros.</div>
+      </div>
+      <div class="arq-card">
+        <div class="arq-role">Interiores</div>
+        <div class="arq-name">Todos Arquitetura</div>
+        <div class="arq-desc">Design com materialidade expressiva, paleta de cores marcante e curadoria de design. Áreas comuns com linguagem atemporal, funcional e com identidade forte — para você aproveitar cada experiência ao máximo.</div>
+      </div>
+      <div class="arq-card">
+        <div class="arq-role">Paisagismo</div>
+        <div class="arq-name">Raul Pereira</div>
+        <div class="arq-desc">Formado e doutor pela FAU-USP. Responsável pelos jardins do Museu do Ipiranga. No OLIIE 117, um bosque silvestre com ipês, cássias e eritrinas nativas da Mata Atlântica do térreo ao último andar.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACHADA CLOSE (full-width split) -->
+<div class="split">
+  <div class="split-img">
+    <img src="assets/oliie-renders/fachada-close.jpg" alt="Fachada OLIIE 117 — detalhe arquitetônico">
+  </div>
+  <div class="split-text" style="background:var(--brown);color:#fff;">
+    <div class="label" style="color:var(--orange);">Arquitetura Viva</div>
+    <h2 class="title" style="color:#fff;">Uma fachada que<br>se torna ícone.</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:24px;">O Triptyque buscou homenagear a dinâmica das duas esquinas do terreno, criando uma composição de ritmo, verticalidade e elegância. O OLIIE 117 vira um ponto de referência notável na cidade de São Paulo.</p>
+    <a href="#form" class="btn-orange" style="align-self:flex-start;">Quero conhecer →</a>
+  </div>
+</div>
+
+<!-- TIPOLOGIAS -->
+<section class="tipos">
+  <div class="container">
+    <div class="label">Tipologias e preços</div>
+    <h2 class="title">Seu apartamento<br>do seu jeito.</h2>
+    <p class="subtitle" style="margin-bottom:0;">Restam apenas 2 unidades disponíveis — 2 Suítes Premium com sala integrada ao terraço, 84,42 m², em andares distintos.</p>
+    <div class="tipos-grid reveal">
+      <div class="tipo-card">
+        <div>
+          <div class="tipo-name">2 Suítes Premium · Unidade 36</div>
+          <div class="tipo-metros">84,42 m² · sala integrada ao terraço · 1 vaga</div>
+        </div>
+        <div class="tipo-right">
+          <div class="tipo-from">DISPONÍVEL</div>
+          <div class="tipo-price">R$ 1.975.239,72</div>
+          <div class="tipo-units">1 unidade</div>
+        </div>
+      </div>
+      <div class="tipo-card">
+        <div>
+          <div class="tipo-name">2 Suítes Premium · Unidade 26</div>
+          <div class="tipo-metros">84,42 m² · sala integrada ao terraço · 1 vaga</div>
+        </div>
+        <div class="tipo-right">
+          <div class="tipo-from">DISPONÍVEL</div>
+          <div class="tipo-price">R$ 1.955.487,33</div>
+          <div class="tipo-units">1 unidade</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK DE PLANTAS -->
+<section class="plantas">
+  <div class="container">
+    <div class="label">Book de plantas</div>
+    <h2 class="title">Conheça cada detalhe<br>das unidades disponíveis.</h2>
+    <p class="subtitle">Clique em qualquer planta para ampliar.</p>
+    <div class="plantas-grid">
+      <div class="planta-thumb" onclick="openLB(25)">
+        <img src="assets/oliie-book/page_19.jpg" alt="Plantas das Unidades — Oliie 117">
+      </div>
+      <div class="planta-thumb" onclick="openLB(26)">
+        <img src="assets/oliie-book/page_20.jpg" alt="Plantas das Unidades — Oliie 117">
+      </div>
+      <div class="planta-thumb" onclick="openLB(27)">
+        <img src="assets/oliie-book/page_21.jpg" alt="Planta 46 m² — 1 Suíte">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÁREAS COMUNS (BOOK) -->
+<section class="areas-comuns-sec">
+  <div class="container">
+    <div class="label">Áreas comuns</div>
+    <h2 class="title">Espaços pensados para<br>cada momento do seu dia.</h2>
+    <p class="subtitle">Clique em qualquer imagem para ampliar.</p>
+    <div class="areas-grid">
+      <div class="area-thumb" onclick="openLB(13)">
+        <img src="assets/oliie-book/page_07.jpg" alt="Lobby — Oliie 117">
+        <div class="area-label">Lobby</div>
+      </div>
+      <div class="area-thumb" onclick="openLB(14)">
+        <img src="assets/oliie-book/page_08.jpg" alt="Praça — Oliie 117">
+        <div class="area-label">Praça</div>
+      </div>
+      <div class="area-thumb" onclick="openLB(15)">
+        <img src="assets/oliie-book/page_09.jpg" alt="Coworking — Oliie 117">
+        <div class="area-label">Coworking</div>
+      </div>
+      <div class="area-thumb" onclick="openLB(16)">
+        <img src="assets/oliie-book/page_10.jpg" alt="Lavanderia — Oliie 117">
+        <div class="area-label">Lavanderia</div>
+      </div>
+      <div class="area-thumb" onclick="openLB(17)">
+        <img src="assets/oliie-book/page_11.jpg" alt="Piscina — Oliie 117">
+        <div class="area-label">Piscina</div>
+      </div>
+      <div class="area-thumb" onclick="openLB(18)">
+        <img src="assets/oliie-book/page_12.jpg" alt="Lounge Piscina — Oliie 117">
+        <div class="area-label">Lounge Piscina</div>
+      </div>
+      <div class="area-thumb" onclick="openLB(19)">
+        <img src="assets/oliie-book/page_13.jpg" alt="Sauna — Oliie 117">
+        <div class="area-label">Sauna</div>
+      </div>
+      <div class="area-thumb" onclick="openLB(20)">
+        <img src="assets/oliie-book/page_14.jpg" alt="Fitness — Oliie 117">
+        <div class="area-label">Fitness</div>
+      </div>
+      <div class="area-thumb" onclick="openLB(21)">
+        <img src="assets/oliie-book/page_15.jpg" alt="Sala de Jogos — Oliie 117">
+        <div class="area-label">Sala de Jogos</div>
+      </div>
+      <div class="area-thumb" onclick="openLB(22)">
+        <img src="assets/oliie-book/page_16.jpg" alt="Lounge Festas — Oliie 117">
+        <div class="area-label">Lounge Festas</div>
+      </div>
+      <div class="area-thumb" onclick="openLB(23)">
+        <img src="assets/oliie-book/page_17.jpg" alt="Terraço Festas — Oliie 117">
+        <div class="area-label">Terraço Festas</div>
+      </div>
+      <div class="area-thumb" onclick="openLB(24)">
+        <img src="assets/oliie-book/page_18.jpg" alt="Terraço ao Ar Livre — Oliie 117">
+        <div class="area-label">Terraço</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRAÇA (split) -->
+<div class="split reverse">
+  <div class="split-text" style="background:var(--bege);">
+    <div class="label">Paisagismo Raul Pereira</div>
+    <h2 class="title">Um bosque<br>silvestre no coração<br>da cidade.</h2>
+    <p class="subtitle">Ipês, cássias e eritrinas nativas da Mata Atlântica. Do térreo ao último andar, o OLIIE 117 convida a percorrer um espaço sugerido pela vegetação — como um grande bosque urbano.</p>
+  </div>
+  <div class="split-img">
+    <img src="assets/oliie-renders/praca.jpg" alt="Praça OLIIE 117 — paisagismo Raul Pereira">
+  </div>
+</div>
+
+<!-- PISCINA HERO (full-width) -->
+<div class="piscina-hero">
+  <img src="assets/oliie-renders/piscina.jpg" alt="Piscina elevada OLIIE 117 — 10º pavimento">
+  <div class="piscina-text">
+    <div class="label">10º Pavimento</div>
+    <h2 class="title" style="color:#fff;font-size:clamp(28px,5vw,48px);">Lazer elevado.<br>Vista de São Paulo.</h2>
+    <p class="subtitle" style="color:rgba(255,255,255,.7);">Piscina, solarium, sauna, lounge e fitness — tudo no 10º andar, com o horizonte da cidade como cenário.</p>
+  </div>
+</div>
+
+<!-- AMENITIES GALLERY -->
+<section class="amenities">
+  <div class="container">
+    <div class="label">Áreas comuns</div>
+    <h2 class="title">Cada detalhe pensado<br>para o seu estilo de vida.</h2>
+    <div class="floors-gallery" style="margin-top:40px;">
+      <div class="floor-item clickable" onclick="openLB(4)">
+        <img src="assets/oliie-renders/lobby.jpg" alt="Lobby OLIIE 117">
+        <div class="floor-overlay">
+          <div class="floor-tag">Térreo</div>
+          <div class="floor-name">Lobby · Praça · Pet Place</div>
+        </div>
+      </div>
+      <div class="floor-item clickable" onclick="openLB(5)">
+        <img src="assets/oliie-renders/coworking.jpg" alt="Coworking OLIIE 117">
+        <div class="floor-overlay">
+          <div class="floor-tag">1º Pav.</div>
+          <div class="floor-name">Coworking · Lavanderia</div>
+        </div>
+      </div>
+      <div class="floor-item clickable" onclick="openLB(6)">
+        <img src="assets/oliie-renders/lounge-piscina.jpg" alt="Lounge Piscina OLIIE 117">
+        <div class="floor-overlay">
+          <div class="floor-tag">10º Pav.</div>
+          <div class="floor-name">Lounge Piscina · Sauna</div>
+        </div>
+      </div>
+      <div class="floor-item clickable" onclick="openLB(7)">
+        <img src="assets/oliie-renders/fitness.jpg" alt="Fitness OLIIE 117">
+        <div class="floor-overlay">
+          <div class="floor-tag">10º Pav.</div>
+          <div class="floor-name">Espaço Fitness</div>
+        </div>
+      </div>
+      <div class="floor-item clickable" onclick="openLB(8)">
+        <img src="assets/oliie-renders/lounge-festas.jpg" alt="Lounge Festas OLIIE 117">
+        <div class="floor-overlay">
+          <div class="floor-tag">26º Pav. · Rooftop</div>
+          <div class="floor-name">Lounge Festas</div>
+        </div>
+      </div>
+      <div class="floor-item clickable" onclick="openLB(9)">
+        <img src="assets/oliie-renders/fire-pit.jpg" alt="Fire Pit OLIIE 117">
+        <div class="floor-overlay">
+          <div class="floor-tag">26º Pav. · Rooftop</div>
+          <div class="floor-name">Terraço · Fire Pit</div>
+
+      <div class="floor-item clickable" onclick="openLB(10)">
+        <img src="assets/oliie-renders/sauna.jpg" alt="Sauna OLIIE 117 — 10º Pavimento">
+        <div class="floor-overlay">
+          <div class="floor-tag">10º Pav.</div>
+          <div class="floor-name">Sauna</div>
+        </div>
+      </div>
+      <div class="floor-item clickable" onclick="openLB(11)">
+        <img src="assets/oliie-renders/jogos.jpg" alt="Sala de Jogos OLIIE 117">
+        <div class="floor-overlay">
+          <div class="floor-tag">10º Pav.</div>
+          <div class="floor-name">Sala de Jogos</div>
+        </div>
+      </div>
+    </div><!-- /floors-gallery -->
+    <div class="gallery-trigger reveal">
+      <button class="btn-gallery" onclick="openLB(0)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zm-8.5-5.5L9 17l-2-2.5L4 18h16l-5-6.5-2.5 3z"/></svg>
+        Ver todas as fotos — 13 renders exclusivos
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULAÇÃO DE PAGAMENTO -->
+<section class="pgto">
+  <div class="container">
+    <div class="label">Simulação de pagamento</div>
+    <h2 class="title">Entrar com pouco.<br>Receber muito mais.</h2>
+    <p class="subtitle" style="margin-bottom:40px;">No pré-lançamento, a entrada é diluída ao longo da obra. Veja como fica uma simulação real para o apartamento de 84m².</p>
+    <div class="pgto-wrap">
+      <div class="pgto-card">
+        <div class="pgto-title">Simulação real</div>
+        <div class="pgto-name">OLIIE Pinheiros</div>
+        <div class="pgto-addr">Unidade 36 · 3º andar · 84,42 m²</div>
+        <div class="pgto-row">
+          <span class="pgto-row-label">Entrada</span>
+          <span class="pgto-row-val highlight">R$ 187.173,72</span>
+        </div>
+        <div class="pgto-row">
+          <span class="pgto-row-label">Mensal (37 parcelas)</span>
+          <span class="pgto-row-val">R$ 2.474,39</span>
+        </div>
+        <div class="pgto-row">
+          <span class="pgto-row-label">Anuais (3 parcelas)</span>
+          <span class="pgto-row-val">R$ 27.126,63</span>
+        </div>
+        <div class="pgto-row">
+          <span class="pgto-row-label">Única (08/2027)</span>
+          <span class="pgto-row-val">R$ 162.759,76</span>
+        </div>
+        <div class="pgto-row">
+          <span class="pgto-row-label">Financiamento (09/2027)</span>
+          <span class="pgto-row-val">R$ 1.511.631,27</span>
+        </div>
+        <div class="pgto-total">
+          <span class="pgto-total-label">Total</span>
+          <span class="pgto-total-val">R$ 2.034.497</span>
+        </div>
+        <div class="pgto-note">* Valores corrigidos mensalmente pelo INCC. Simulação de referência — valores sujeitos a ajustes conforme unidade escolhida.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Unidades disponíveis</div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;">
+          <div style="display:grid;grid-template-columns:auto 1fr 1fr;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);background:var(--bege);padding:10px 16px;border-bottom:1px solid var(--border);">
+            <span>Unidade</span><span style="text-align:center;">Área</span><span style="text-align:right;">Valor</span>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr 1fr;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border);gap:8px;">
+            <span style="background:var(--orange);color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;white-space:nowrap;">Unid. 36</span>
+            <span style="font-size:13px;color:var(--muted);text-align:center;">84,42 m²</span>
+            <span style="font-size:14px;font-weight:900;color:var(--orange);text-align:right;">R$ 1.975.239,72</span>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr 1fr;align-items:center;padding:14px 16px;gap:8px;">
+            <span style="background:var(--brown);color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;white-space:nowrap;">Unid. 26</span>
+            <span style="font-size:13px;color:var(--muted);text-align:center;">84,42 m²</span>
+            <span style="font-size:14px;font-weight:900;color:var(--orange);text-align:right;">R$ 1.955.487,33</span>
+          </div>
+        </div>
+        <img src="assets/oliie-simulacao.jpg" alt="Simulação pagamento Oliie 117" style="width:100%;border-radius:var(--radius);">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section class="local">
+  <div class="container">
+    <div class="local-grid">
+      <div>
+        <div class="label">Localização</div>
+        <h2 class="title">Pinheiros.<br>O epicentro da nova SP.</h2>
+        <p class="subtitle">Arte, gastronomia, moda, mobilidade. Uma intersecção de regiões no centro da vida urbana paulistana.</p>
+        <div class="dist-list">
+          <div class="dist-row">
+            <div class="dist-dot"></div>
+            <div class="dist-name">Metrô Fradique Coutinho</div>
+            <div class="dist-time">5 min a pé</div>
+          </div>
+          <div class="dist-row">
+            <div class="dist-dot"></div>
+            <div class="dist-name">Jardins</div>
+            <div class="dist-time">10 min a pé</div>
+          </div>
+          <div class="dist-row">
+            <div class="dist-dot"></div>
+            <div class="dist-name">Av. Faria Lima</div>
+            <div class="dist-time">8 min de carro</div>
+          </div>
+          <div class="dist-row">
+            <div class="dist-dot"></div>
+            <div class="dist-name">Av. Paulista</div>
+            <div class="dist-time">12 min de carro</div>
+          </div>
+          <div class="dist-row">
+            <div class="dist-dot"></div>
+            <div class="dist-name">Aeroporto Congonhas</div>
+            <div class="dist-time">20 min de carro</div>
+          </div>
+        </div>
+      </div>
+      <div class="map-placeholder">
+        <div style="font-size:48px;margin-bottom:12px;">📍</div>
+        <div style="font-size:16px;font-weight:800;color:var(--orange);margin-bottom:6px;">OLIIE 117</div>
+        <div style="font-size:13px;color:var(--muted);">Rua Fernandes Coelho, 117<br>Pinheiros — São Paulo, SP</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVELOPER -->
+<section class="skr">
+  <div class="container">
+    <div class="skr-inner">
+      <div>
+        <div class="label">Incorporadora</div>
+        <h2 class="title">SKR — Arquitetura<br>Viva desde 1985.</h2>
+        <p class="subtitle">Apaixonada por arquitetura, a SKR acompanha de perto cada projeto — da escolha do terreno ao último detalhe do acabamento. Cada edifício SKR é único. Nenhum parece o anterior.</p>
+        <div class="skr-stats reveal">
+          <div class="skr-stat">
+            <div class="skr-stat-num">40+</div>
+            <div class="skr-stat-label">Anos de mercado</div>
+          </div>
+          <div class="skr-stat">
+            <div class="skr-stat-num">2.100</div>
+            <div class="skr-stat-label">Unidades entregues</div>
+          </div>
+          <div class="skr-stat">
+            <div class="skr-stat-num">559 mil</div>
+            <div class="skr-stat-label">m² construídos</div>
+          </div>
+          <div class="skr-stat">
+            <div class="skr-stat-num">100%</div>
+            <div class="skr-stat-label">Projetos únicos</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--bege);border:1px solid var(--border);border-radius:20px;padding:32px;">
+        <div style="font-size:18px;font-weight:900;margin-bottom:16px;color:var(--orange);">Ficha Técnica</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;font-size:14px;padding-bottom:10px;border-bottom:1px solid var(--border);"><span style="color:var(--muted);">Endereço</span><span style="font-weight:600;color:var(--brown);">R. Fernandes Coelho, 117</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;padding-bottom:10px;border-bottom:1px solid var(--border);"><span style="color:var(--muted);">Terreno</span><span style="font-weight:600;color:var(--brown);">1.679,90 m²</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;padding-bottom:10px;border-bottom:1px solid var(--border);"><span style="color:var(--muted);">Torre</span><span style="font-weight:600;color:var(--brown);">Única · 26 pavimentos</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;padding-bottom:10px;border-bottom:1px solid var(--border);"><span style="color:var(--muted);">Arquitetura</span><span style="font-weight:600;color:var(--brown);">Triptyque</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;padding-bottom:10px;border-bottom:1px solid var(--border);"><span style="color:var(--muted);">Interiores</span><span style="font-weight:600;color:var(--brown);">Todos Arquitetura</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;"><span style="color:var(--muted);">Paisagismo</span><span style="font-weight:600;color:var(--brown);">Raul Pereira</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="form-section" id="form">
+  <div class="form-wrap">
+    <div class="form-title">Receba a tabela<br>de preços completa</div>
+    <div class="form-sub">Nosso especialista entra em contato em até 2h com plantas, preços atualizados e condições exclusivas de pré-lançamento.</div>
+    <form id="lead-form" onsubmit="submitForm(event)">
+      <div class="fg">
+        <label>Seu nome</label>
+        <input type="text" id="f-nome" placeholder="Nome completo" required>
+      </div>
+      <div class="fg">
+        <label>WhatsApp</label>
+        <input type="tel" id="f-fone" placeholder="(11) 9 0000-0000" required inputmode="numeric">
+      </div>
+      <div class="fg">
+        <label>Tipologia de interesse</label>
+        <select id="f-tipo" required>
+          <option value="">Selecione</option>
+          <option value="Unidade 36 — 84,42m² (R$ 1.975.239,72)">Unidade 36 — 84,42 m² · R$ 1.975.239,72</option>
+          <option value="Unidade 26 — 84,42m² (R$ 1.955.487,33)">Unidade 26 — 84,42 m² · R$ 1.955.487,33</option>
+          <option value="Quero ver ambas as unidades">Quero conhecer as duas unidades</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Objetivo</label>
+        <select required>
+          <option value="">Para morar ou investir?</option>
+          <option value="Morar">Quero morar</option>
+          <option value="Investir">Quero investir</option>
+          <option value="Ambos">Os dois</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-submit">Quero receber a tabela de preços →</button>
+    </form>
+    <div class="form-divider">ou fale agora</div>
+    <a href="https://wa.me/5511967830853?text=Olá!%20Vi%20o%20OLIIE%20117%20em%20Pinheiros%20e%20tenho%20interesse%20em%20conhecer%20mais" class="btn-wpp" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar no WhatsApp
+    </a>
+    <div class="form-legal">🔒 Seus dados não serão compartilhados. Retorno em até 2h em horário comercial.</div>
+    <div class="form-success" id="form-ok">
+      <h3>Interesse registrado!</h3>
+      <p>Um especialista vai entrar em contato pelo WhatsApp em até 2 horas com a tabela de preços e condições exclusivas do OLIIE 117.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- OUTROS EMPREENDIMENTOS -->
+<section class="outros">
+  <div class="container">
+    <div class="label">Mais opções na região</div>
+    <h2 class="title">Outros empreendimentos<br>em Pinheiros para você.</h2>
+    <p class="subtitle">Somos especialistas em lançamentos na Zona Oeste. Se você quer explorar mais opções, temos um portfólio curado na mesma região.</p>
+    <div class="outros-grid">
+
+      <div class="outro-card reveal">
+        <div class="outro-thumb" style="background:linear-gradient(140deg,#1b3a5c 0%,#2d6eae 100%);">
+          <svg style="opacity:.18;width:80px;height:80px;fill:#fff;" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7.19L5.09 6 12 2.81 18.91 6 12 9.19zm0 2.62L2 7v2.07l10 5 10-5V7L12 11.81zm0 5L2 12v2.07l10 5 10-5V12L12 16.81z"/></svg>
+          <div class="outro-badge">Pré-Lançamento</div>
+        </div>
+        <div class="outro-body">
+          <div class="outro-name">NexOne Bela Cintra</div>
+          <div class="outro-loc">📍 Bela Cintra — Pinheiros, SP</div>
+          <div class="outro-chips">
+            <span class="outro-chip">Studios</span>
+            <span class="outro-chip">1 Suíte</span>
+            <span class="outro-chip">2 Suítes</span>
+          </div>
+          <div class="outro-from">A PARTIR DE</div>
+          <div class="outro-price">R$ 450.000</div>
+          <a href="https://wa.me/5511967830853?text=Olá!%20Vi%20o%20OLIIE%20117%20e%20quero%20saber%20mais%20sobre%20o%20NexOne%20Bela%20Cintra%20em%20Pinheiros" class="outro-cta" target="_blank" rel="noopener">Ver opção →</a>
+        </div>
+      </div>
+
+      <div class="outro-card reveal" style="transition-delay:.1s">
+        <div class="outro-thumb" style="background:linear-gradient(140deg,#2d4a1e 0%,#4a7c35 100%);">
+          <svg style="opacity:.18;width:80px;height:80px;fill:#fff;" viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+          <div class="outro-badge">Zona Oeste</div>
+        </div>
+        <div class="outro-body">
+          <div class="outro-name">Lançamentos Pinheiros</div>
+          <div class="outro-loc">📍 Pinheiros · Cerqueira César · Jardins</div>
+          <div class="outro-chips">
+            <span class="outro-chip">Studios</span>
+            <span class="outro-chip">2 Suítes</span>
+            <span class="outro-chip">Alto Padrão</span>
+          </div>
+          <div class="outro-from">DIVERSAS FAIXAS</div>
+          <div class="outro-price">R$ 350k – R$ 2M+</div>
+          <a href="https://wa.me/5511967830853?text=Olá!%20Vi%20o%20OLIIE%20117%20e%20quero%20conhecer%20outros%20lançamentos%20em%20Pinheiros%20e%20região" class="outro-cta" target="_blank" rel="noopener">Ver mais opções →</a>
+        </div>
+      </div>
+
+      <div class="outro-card reveal" style="transition-delay:.2s">
+        <div class="outro-thumb" style="background:linear-gradient(140deg,#5A3E2B 0%,#D76B28 100%);">
+          <svg style="opacity:.18;width:80px;height:80px;fill:#fff;" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <div class="outro-badge">Portfólio Exclusivo</div>
+        </div>
+        <div class="outro-body">
+          <div class="outro-name">Curadoria Revenda Imóvel</div>
+          <div class="outro-loc">📍 São Paulo · Zona Oeste e Paulista</div>
+          <div class="outro-chips">
+            <span class="outro-chip">Revenda</span>
+            <span class="outro-chip">Lançamento</span>
+            <span class="outro-chip">Investimento</span>
+          </div>
+          <div class="outro-from">CONSULTE</div>
+          <div class="outro-price">Conforme seu perfil</div>
+          <a href="https://wa.me/5511967830853?text=Olá!%20Quero%20conhecer%20o%20portfólio%20completo%20da%20Revenda%20Imóvel%20em%20São%20Paulo" class="outro-cta" target="_blank" rel="noopener">Ver portfólio →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="finalcta" style="padding:0;">
+  <div class="finalcta-bg">
+    <img src="assets/oliie-renders/terraco-festas.jpg" alt="Terraço Festas OLIIE 117">
+  </div>
+  <div class="finalcta-content" style="padding:96px 24px;">
+    <div class="container">
+      <h2>Pinheiros não espera.<br><em>Você também não deveria.</em></h2>
+      <p>Unidades de pré-lançamento têm condições que somem no lançamento público. Garanta as suas agora.</p>
+      <div class="final-btns">
+        <a href="#form" class="btn-orange">Garantir condições de pré-lançamento</a>
+        <a href="https://wa.me/5511967830853?text=Olá!%20Quero%20garantir%20condições%20de%20pré-lançamento%20no%20OLIIE%20117%20em%20Pinheiros" class="btn-ghost" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp direto
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img src="assets/logo-revenda-horizontal.jpg" alt="Revenda Imóvel">
+  </div>
+  <div class="footer-text">
+    CRECI-SP · Correspondente autorizado SKR · 2026<br>
+    <small style="opacity:.6;">Imagens ilustrativas do produto. Os materiais de acabamento que serão entregues fazem parte do contrato e do Memorial Descritivo. Projeto em desenvolvimento, podendo sofrer alterações. Preços sujeitos a alteração. Valores corrigidos pelo INCC.</small>
+  </div>
+</footer>
+
+
+<!-- LIGHTBOX MODAL -->
+<div class="lb-overlay" id="lb-overlay">
+  <button class="lb-close" onclick="closeLB()">✕</button>
+  <div class="lb-inner">
+    <button class="lb-prev" onclick="lbNav(-1)">&#8249;</button>
+    <img class="lb-img" id="lb-img" src="" alt="">
+    <button class="lb-next" onclick="lbNav(1)">&#8250;</button>
+  </div>
+  <div class="lb-meta">
+    <div class="lb-counter" id="lb-counter"></div>
+    <div class="lb-caption" id="lb-caption"></div>
+    <div class="lb-thumbs" id="lb-thumbs"></div>
+  </div>
+</div>
+
+<!-- FLOATING WPP -->
+<a href="https://wa.me/5511967830853?text=Olá!%20Vi%20o%20OLIIE%20117%20em%20Pinheiros%20e%20tenho%20interesse" class="wpp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  WhatsApp
+</a>
+
+<script>
+document.getElementById('f-fone').addEventListener('input',function(e){
+  let v=e.target.value.replace(/\D/g,'');
+  if(v.length<=2)v='('+v;
+  else if(v.length<=7)v='('+v.slice(0,2)+') '+v.slice(2);
+  else if(v.length<=11)v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
+  else v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7,11);
+  e.target.value=v;
+});
+function submitForm(e){
+  e.preventDefault();
+  const nome=document.getElementById('f-nome').value;
+  const tipo=document.getElementById('f-tipo').value;
+  if(typeof fbq!=='undefined') fbq('track','Lead',{content_name:'OLIIE 117',content_category:tipo});
+  document.getElementById('lead-form').style.display='none';
+  document.querySelector('.form-divider').style.display='none';
+  document.querySelector('.btn-wpp').style.display='none';
+  document.querySelector('.form-legal').style.display='none';
+  document.getElementById('form-ok').style.display='block';
+  const msg=encodeURIComponent('Olá! Meu nome é '+nome+' e tenho interesse no OLIIE 117 — '+tipo+'. Acabei de preencher o formulário no site.');
+  document.querySelectorAll('[href^="https://wa.me"]').forEach(a=>{a.href='https://wa.me/5511967830853?text='+msg;});
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>40);
+});
+</script>
+</body>
+</html>
